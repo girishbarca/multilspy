@@ -1,0 +1,15 @@
+{
+  "_description": "Used to download the runtime dependencies for running ruby-lsp",
+  "runtimeDependencies": [
+    {
+      "id": "create-gemfile",
+      "description": "Creates Gemfile to install ruby-lsp",
+      "command": "printf \"source 'https://rubygems.org'\ngem 'ruby-lsp'\" > Gemfile"
+    },
+    {
+      "id": "ruby-lsp",
+      "description": "Ruby Language Server for Linux, OSX, and Windows",
+      "command": "bundle install --path vendor/bundle"
+    }
+  ]
+}

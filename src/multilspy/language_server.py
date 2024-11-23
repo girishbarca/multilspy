@@ -100,6 +100,11 @@ class LanguageServer:
                 TypeScriptLanguageServer,
             )
             return TypeScriptLanguageServer(config, logger, repository_root_path)
+        elif config.code_language == Language.RUBY:
+            from multilspy.language_servers.ruby_lsp.ruby_lsp import (
+                RubyLSP,
+            )
+            return RubyLSP(config, logger, repository_root_path)
         else:
             logger.log(f"Language {config.code_language} is not supported", logging.ERROR)
             raise MultilspyException(f"Language {config.code_language} is not supported")
@@ -389,7 +394,7 @@ class LanguageServer:
                     )
                     ret.append(multilspy_types.Location(new_item))
                 elif (
-                    LSPConstants.ORIGIN_SELECTION_RANGE in item
+                    (LSPConstants.ORIGIN_SELECTION_RANGE in item or self.language_id == Language.RUBY)
                     and LSPConstants.TARGET_URI in item
                     and LSPConstants.TARGET_RANGE in item
                     and LSPConstants.TARGET_SELECTION_RANGE in item
