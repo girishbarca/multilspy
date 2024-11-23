@@ -1,5 +1,5 @@
 """
-Provides Ruby specific instantiation of the LanguageServer class. Contains various configurations and settings specific to TypeScript.
+Provides Ruby specific instantiation of the LanguageServer class. Contains various configurations and settings specific to Ruby.
 """
 
 import asyncio
@@ -46,7 +46,7 @@ class RubyLSP(LanguageServer):
 
     def setup_runtime_dependencies(self, logger: MultilspyLogger, config: MultilspyConfig) -> str:
         """
-        Setup runtime dependencies for TypeScript Language Server.
+        Setup runtime dependencies for Ruby Language Server.
         """
         platform_id = PlatformUtils.get_platform_id()
 
@@ -60,7 +60,7 @@ class RubyLSP(LanguageServer):
             PlatformId.WIN_arm64,
         ]
         assert platform_id in valid_platforms, f"Platform {
-            platform_id} is not supported for multilspy javascript/typescript at the moment"
+            platform_id} is not supported for multilspy ruby at the moment"
 
         with open(os.path.join(os.path.dirname(__file__), "runtime_dependencies.json"), "r") as f:
             d = json.load(f)
@@ -75,7 +75,7 @@ class RubyLSP(LanguageServer):
         is_npm_installed = shutil.which('gem') is not None
         assert is_npm_installed, "gem is not installed or isn't in PATH. Please install gem and try again."
 
-        # Install typescript and typescript-language-server if not already installed, as a non-root user
+        # Install ruby-lsp gem as a non-root user
         if not os.path.exists(self.ruby_ls_dir):
             os.makedirs(self.ruby_ls_dir, exist_ok=True)
             for dependency in runtime_dependencies:
