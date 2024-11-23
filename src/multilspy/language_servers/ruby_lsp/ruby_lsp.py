@@ -69,7 +69,7 @@ class RubyLSP(LanguageServer):
         runtime_dependencies = d.get("runtimeDependencies", [])
         ruby_lsp_command = "bundle exec ruby-lsp"
 
-        # Verify both node and npm are installed
+        # Verify both bundle and gem are installed
         is_node_installed = shutil.which('bundle') is not None
         assert is_node_installed, "bundle is not installed or isn't in PATH. Please install bundle and try again."
         is_npm_installed = shutil.which('gem') is not None

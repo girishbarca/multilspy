@@ -10,7 +10,7 @@ from pathlib import PurePath
 
 def test_multilspy_ruby_todo():
     """
-    Test the working of multilspy with javascript repository - todo
+    Test the working of multilspy with ruby repository - todo
     """
     code_language = Language.RUBY
     params = {

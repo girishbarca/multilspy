@@ -15,7 +15,7 @@ pytest_plugins = ("pytest_asyncio",)
 @pytest.mark.asyncio
 async def test_multilspy_ruby_todo():
     """
-    Test the working of multilspy with javascript repository - todo
+    Test the working of multilspy with ruby repository - todo
     """
     code_language = Language.RUBY
     params = {
